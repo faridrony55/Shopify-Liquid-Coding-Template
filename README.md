@@ -1,0 +1,1 @@
+# Shopify-Liquid-Coding-Template
