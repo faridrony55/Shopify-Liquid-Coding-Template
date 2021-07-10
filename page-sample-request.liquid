@@ -1,0 +1,231 @@
+ <div class="container">
+  <div class="header">
+    <h1>{{ section.settings.title }}</h1>
+    <span>{{ section.settings.subheading }}</span>
+  </div>
+  
+  <div class="row">
+    
+    	<div class="col-md-12">
+          <div class="sampletextlist">
+             <ul>
+               {% for block in section.blocks %}
+               	<li>{{ block.settings.samplepacktext }}</li>
+               {% endfor %}
+            </ul>
+          </div>
+    	</div>
+    
+    
+    
+    <div class="col-md-12">
+      <div class="form boxshadow">
+        
+        <h2>{{ section.settings.formheading }}</h2>
+        
+         {%- assign formId = 'SampleRequest' -%}
+        {% form 'contact', id: formId %}
+         {% include 'form-status', form: form, form_id: formId %}
+           
+        
+        
+        <div class="row">
+          <div class="col-md-6">
+            
+        	<input 
+                   placeholder="First Name" 
+                   type="text" 
+                   name="contact[first_name]" 
+                   class="form-contrsol" 
+                   {% if form.first_name %}value="{{ form.first_name }}"{% endif %} 
+                     
+                   >
+        	<input 
+                   placeholder="Business Name" 
+                   type="text" 
+                   name="contact[business_name]" 
+                   class="form-contrsol" 
+                   {% if form.business_name %}value="{{ form.business_name }}"{% endif %} 
+                     
+                   >
+        	<input 
+                   placeholder="Email" 
+                   type="email" 
+                   name="contact[email]" 
+                   class="form-contrsol" 
+                   {% if form.email %}value="{{ form.email }}"{% endif %} 
+                     
+                   >
+          	
+          </div>
+          <div class="col-md-6">
+            
+        	<input 
+                   placeholder="Last Name" 
+                   type="text" 
+                   name="contact[last_name]" 
+                   class="form-contsrol" 
+                   {% if form.last_name %}value="{{ form.last_name }}"{% endif %} 
+                     
+                   >
+        	<input 
+                   placeholder="Online, Snap-On, Independent, etc..." 
+                   type="text" 
+                   name="contact[online_snapon_independent]" 
+                   class="form-contsrol" 
+                   {% if form.online_snapon_independent %}value="{{ form.online_snapon_independent }}"{% endif %} 
+                     
+                   >
+        	<input 
+                   placeholder="Phone" 
+                   type="text" 
+                   name="contact[phone]" 
+                   class="form-contsrol" 
+                   {% if form.phone %}value="{{ form.phone }}"{% endif %} 
+                     
+                   >
+          	
+          </div>
+          
+          <div class="col-md-12">
+            
+        	<input 
+                   placeholder="Shipping Address" 
+                   type="text" 
+                   name="contact[shipping_address]" 
+                   class="form-contrsol" 
+                   {% if form.shipping_address %}value="{{ form.shipping_address }}"{% endif %} 
+                     
+                   >
+          </div>
+          
+          <div class="col-md-6">
+            
+        	<input 
+                   placeholder="Shipping City" 
+                   type="text" 
+                   name="contact[shipping_city]" 
+                   class="form-contrsol" 
+                   {% if form.shipping_city %}value="{{ form.shipping_city }}"{% endif %} 
+                     
+                   >
+          </div>
+          <div class="col-md-6">
+            
+        	<input 
+                   placeholder="Shipping State (WA, CA, TX, etc)" 
+                   type="text" 
+                   name="contact[shipping_state]" 
+                   class="form-contrsol" 
+                   {% if form.shipping_state %}value="{{ form.shipping_state }}"{% endif %} 
+                     
+                   >
+          </div>
+          
+          
+          <div class="col-md-12">
+            
+        	<input 
+                   placeholder="Shipping Zip Code" 
+                   type="text" 
+                   name="contact[shipping_zipcode]" 
+                   class="form-contrsol" 
+                   {% if form.shipping_zipcode %}value="{{ form.shipping_zipcode }}"{% endif %} 
+                     
+                   >
+            
+        	<input 
+                   placeholder="Comments or Notes?" 
+                   type="text" 
+                   name="contact[comments_notes]" 
+                   class="form-contrsol" 
+                   {% if form.comments_notes %}value="{{ form.comments_notes }}"{% endif %} 
+                     
+                   >
+        	<input 
+                   value="Submit" 
+                   type="submit" 
+                   name="contact[comments_notes]" 
+                   class="btn btn-custom" 
+                    
+                     
+                   >
+          </div>
+          
+          
+        </div>
+        
+        
+        {% endform %}
+        
+      </div>
+    </div>
+    
+    
+    
+   
+    <div class="col-md-12">
+    	{% include "contact-info" %}
+    </div>
+
+    
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Sample Request Page",
+    "settings": [
+		{
+			"label": "Title Name",
+			"id": "title",
+			"type": "text"
+		},
+		{
+			"label" : "Sub Heading",
+			"id" : "subheading",
+			"type" : "text"
+		},
+		{
+			"label" : "Form Heading",
+			"id" : "formheading",
+			"type" : "text",
+			"default" : "DISTRIBUTORS & TOOL TRUCKS REQUEST A FREE SAMPLE KIT!"
+		},
+		{
+			"label" : "Contact Email",
+			"id" : "contactemail",
+			"type" : "text",
+			"default" : "wholesale@toolboxwidget.com"
+		},
+		{
+			"label" : "Contact Number",
+			"id" : "contactnumber",
+			"type" : "text",
+			"default" : "707-WIDGETS = (707) 943-4387"
+		}
+	],
+	"blocks": [
+		{
+
+		"type": "text_block",
+		"name": "Add Content of Samplepack",
+		"settings": [
+			{
+				"type": "text",
+				"id": "samplepacktext",
+				"label": "Sample Text List"
+			}
+		]
+		}
+	]
+	
+    
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
